@@ -1,0 +1,11 @@
+# Secrets
+.env
+.env.local
+
+# Dependency managers
+node_modules/
+
+# Build outputs
+.next/
+out/
+build/
