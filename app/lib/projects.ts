@@ -14,7 +14,7 @@ export interface Project {
       description: "A data engineering pipeline to analyze tire degradation and predict optimal pit windows in real-time. Built with a local DevOps environment focusing on containerization and orchestration.",
       techStack: ["Python", "Docker", "Airflow", "MLflow", "Pandas"],
       category: "DevOps",
-      link: "https://github.com/tbuckets-dev/f1-predictor" // Placeholder link
+      link: "https://github.com/tbuckets-dev/live-pit" // Placeholder link
     },
     {
       id: "run-coach-ai",
