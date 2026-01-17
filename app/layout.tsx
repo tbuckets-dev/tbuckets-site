@@ -1,13 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
 import Navbar from "./components/Navbar";
+import "./globals.css";
 
-// Initialize the standard Inter font
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Vessel | TBuckets",
+  title: "Vessel | T.Buckets",
   description: "IT Infrastructure & Modern DevOps Portfolio",
 };
 
