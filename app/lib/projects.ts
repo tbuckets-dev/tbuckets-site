@@ -11,10 +11,10 @@ export interface Project {
     {
       id: "f1-predictor",
       title: "F1 Pit Window Predictor",
-      description: "A data engineering pipeline to analyze tire degradation and predict optimal pit windows in real-time. Built with a local DevOps environment focusing on containerization and orchestration.",
-      techStack: ["Python", "Docker", "Airflow", "MLflow", "Pandas"],
+      description: "A data engineering pipeline to analyze tire degradation...",
+      techStack: ["Python", "Docker", "Airflow", "MLflow"],
       category: "DevOps",
-      link: "https://github.com/tbuckets-dev/live-pit" // Placeholder link
+      link: "/projects/live-pit" // <--- CHANGED THIS to internal link
     },
     {
       id: "run-coach-ai",
