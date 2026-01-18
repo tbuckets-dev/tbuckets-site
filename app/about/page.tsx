@@ -164,7 +164,7 @@ export default function AboutPage() {
                   <span className="w-8 flex justify-center flex-shrink-0">
                     <FaAws className="text-blue-500 text-lg" />
                   </span>
-                  Azure & Cloud Architecture
+                  AWS & Cloud Architecture
                 </li>
               </ul>
             </div>

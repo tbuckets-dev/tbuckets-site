@@ -11,6 +11,7 @@ const config: Config = {
       colors: {
         blue: colors.blue,
         gray: colors.neutral,
+        green: colors.orange,
       }
     },
   },
