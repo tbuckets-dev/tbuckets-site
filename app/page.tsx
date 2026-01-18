@@ -36,7 +36,7 @@ export default function Home() {
               <Typewriter
                 options={{
                   strings: [
-                    'IT Veteran.',
+                    'IT Professional',
                     'DevOps Engineer.',
                     'Infrastructure Architect.',
                     'Reliability Expert.',
