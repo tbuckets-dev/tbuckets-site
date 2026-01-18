@@ -1,4 +1,6 @@
 import Link from "next/link";
+import { FaDocker, FaPython, FaCloud, FaGithub, FaLinux, FaNetworkWired, FaServer} from "react-icons/fa";
+import { SiNextdotjs, SiTailwindcss, SiPostgresql, SiApache, SiCeph} from "react-icons/si";
 
 export default function AboutPage() {
   return (
@@ -59,22 +61,27 @@ export default function AboutPage() {
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                   Docker & Containerization
+                  <FaDocker className="h-6 w-6 text-blue-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                   CI/CD (GitHub Actions)
+                  <FaGithub className="h-6 w-6 text-blue-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                   Python & Scripting
+                  <FaPython className="h-6 w-6 text-blue-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                   Next.js & React
+                  <SiNextdotjs className="h-6 w-6 text-blue-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-blue-500"></div>
                   Apache Airflow
+                  <SiApache className="h-6 w-6 text-blue-500" />
                 </li>
               </ul>
             </div>
@@ -88,22 +95,27 @@ export default function AboutPage() {
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                   Linux System Administration
+                  <FaLinux className="h-6 w-6 text-green-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                   Network Architecture
+                  <FaNetworkWired className="h-6 w-6 text-green-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
-                  Virtualization (VMware/Proxmox)
+                  Cloud (AWS/Azure)
+                  <FaCloud className="h-6 w-6 text-green-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                   Hardware Maintenance
+                  <FaServer className="h-6 w-6 text-green-500" />
                 </li>
                 <li className="flex items-center gap-3">
                   <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
                   Storage Solutions (Ceph/ZFS)
+                  <SiCeph className="h-6 w-6 text-green-500" />
                 </li>
               </ul>
             </div>
