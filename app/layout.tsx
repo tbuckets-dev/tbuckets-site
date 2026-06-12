@@ -9,6 +9,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tbuckets.us'),
   title: {
     template: '%s | Vessel',
     default: 'Vessel | T.Buckets',
@@ -19,14 +20,6 @@ export const metadata: Metadata = {
     description: '12 Years of IT Experience applied to Modern DevOps.',
     url: 'https://tbuckets.us',
     siteName: 'Vessel',
-    images: [
-      {
-        // We will create this image next, or use a default specific to your brand
-        url: '/og-image.png', 
-        width: 1200,
-        height: 630,
-      },
-    ],
     locale: 'en_US',
     type: 'website',
   },

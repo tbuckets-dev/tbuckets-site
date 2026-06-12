@@ -14,6 +14,7 @@ export default function ContactPage() {
       name: formData.get('name'),
       email: formData.get('email'),
       message: formData.get('message'),
+      company: formData.get('company'), // honeypot
     };
 
     try {
@@ -64,6 +65,12 @@ export default function ContactPage() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Honeypot: hidden from real users, bots autofill it */}
+              <div className="absolute -left-[9999px]" aria-hidden="true">
+                <label htmlFor="company">Company</label>
+                <input type="text" name="company" id="company" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300">
                   Name
@@ -73,6 +80,8 @@ export default function ContactPage() {
                   name="name"
                   id="name"
                   required
+                  maxLength={100}
+                  autoComplete="name"
                   className="mt-2 block w-full rounded-md border-0 bg-gray-800 py-2.5 px-4 text-white shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                   placeholder="John Doe"
                 />
@@ -87,6 +96,8 @@ export default function ContactPage() {
                   name="email"
                   id="email"
                   required
+                  maxLength={254}
+                  autoComplete="email"
                   className="mt-2 block w-full rounded-md border-0 bg-gray-800 py-2.5 px-4 text-white shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                   placeholder="john@example.com"
                 />
@@ -101,6 +112,7 @@ export default function ContactPage() {
                   id="message"
                   required
                   rows={4}
+                  maxLength={5000}
                   className="mt-2 block w-full rounded-md border-0 bg-gray-800 py-2.5 px-4 text-white shadow-sm ring-1 ring-inset ring-gray-700 focus:ring-2 focus:ring-blue-500 sm:text-sm sm:leading-6"
                   placeholder="Tell me about your project infrastructure..."
                 />
