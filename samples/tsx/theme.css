@@ -1,0 +1,56 @@
+/*
+ * Semantic color tokens for the rebrand.
+ * Drop the chosen palette's block into app/globals.css (keep only one active),
+ * then add the semantic color names to tailwind.config.ts (see README.md).
+ * Switching palettes later = swapping this one block.
+ */
+
+/* ---- Palette A: Control Room (terminal emerald on graphite) ---- */
+:root {
+  --bg: #0B0F0E;
+  --surface: #141B19;
+  --surface-2: #1A2421;
+  --border: #263330;
+  --text: #E7ECEA;
+  --muted: #9BA8A3;
+  --faint: #6E7D77;
+  --primary: #34D399;        /* links, highlights, active states */
+  --primary-strong: #34D399; /* button backgrounds */
+  --on-primary: #052E22;     /* text on primary buttons */
+  --primary-hover: #6EE7B7;
+  --accent: #FBBF24;         /* status chips, secondary signals only */
+}
+
+/* ---- Palette B: Indigo Circuit (dev-tool indigo + cyan signal) ----
+:root {
+  --bg: #0C0D15;
+  --surface: #151726;
+  --surface-2: #1B1E33;
+  --border: #262A45;
+  --text: #E6E8F2;
+  --muted: #9DA3BF;
+  --faint: #6F7596;
+  --primary: #818CF8;
+  --primary-strong: #4F46E5;  -- indigo-600: white label passes AA (6.29:1); indigo-500 does not (4.47:1)
+  --on-primary: #FFFFFF;
+  --primary-hover: #6366F1;
+  --accent: #22D3EE;
+}
+*/
+
+/* ---- Palette C: Ignition (amber on warm black) ----
+:root {
+  --bg: #100E0A;
+  --surface: #1B1712;
+  --surface-2: #221D16;
+  --border: #332C22;
+  --text: #EDE9E3;
+  --muted: #A89F93;
+  --faint: #7A7165;
+  --primary: #F59E0B;
+  --primary-strong: #F59E0B;
+  --on-primary: #1C1106;
+  --primary-hover: #FBBF24;
+  --accent: #F87171;
+}
+*/

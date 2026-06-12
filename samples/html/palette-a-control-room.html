@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tbuckets.us mockup — Control Room palette</title>
+<style>
+  :root {
+    --bg: #0B0F0E;
+    --surface: #141B19;
+    --surface-2: #1A2421;
+    --border: #263330;
+    --text: #E7ECEA;
+    --muted: #9BA8A3;
+    --faint: #6E7D77;
+    --primary: #34D399;
+    --primary-strong: #34D399;
+    --on-primary: #052E22;
+    --primary-hover: #6EE7B7;
+    --accent: #FBBF24;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--primary); text-decoration: none; }
+  .container { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem; }
+  .mono { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; }
+
+  /* ---------- Nav ---------- */
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+  .brand { display: flex; align-items: center; gap: .5rem; font-weight: 700; font-size: 1.125rem; color: var(--text); }
+  .brand-mark {
+    width: 1.75rem; height: 1.75rem; border-radius: .4rem;
+    background: var(--primary); color: var(--on-primary);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: .9rem;
+  }
+  .nav-links { display: flex; align-items: center; gap: 1.75rem; }
+  .nav-links a { color: var(--muted); font-size: .9rem; font-weight: 500; padding: .5rem 0; }
+  .nav-links a:hover, .nav-links a[aria-current] { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+    border-radius: .5rem; font-weight: 600; font-size: .9rem;
+    padding: .65rem 1.25rem; border: 1px solid transparent;
+    cursor: pointer; transition: background .15s, border-color .15s;
+  }
+  .btn-primary { background: var(--primary-strong); color: var(--on-primary); }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-secondary { background: transparent; color: var(--text); border-color: var(--border); }
+  .btn-secondary:hover { border-color: var(--muted); }
+  .menu-toggle { display: none; background: none; border: 1px solid var(--border); border-radius: .4rem;
+    color: var(--text); padding: .45rem .6rem; font-size: 1rem; cursor: pointer; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 5.5rem 0 4.5rem; position: relative; overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0;
+    background-image:
+      linear-gradient(to right, color-mix(in srgb, var(--border) 45%, transparent) 1px, transparent 1px),
+      linear-gradient(to bottom, color-mix(in srgb, var(--border) 45%, transparent) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  }
+  .hero .container { position: relative; }
+  .badge {
+    display: inline-flex; align-items: center; gap: .5rem;
+    border-radius: 999px; padding: .3rem .85rem;
+    font-size: .8rem; font-weight: 600;
+    color: var(--primary);
+    background: color-mix(in srgb, var(--primary) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 30%, transparent);
+    margin-bottom: 1.75rem;
+  }
+  .badge .dot { width: .5rem; height: .5rem; border-radius: 999px; background: var(--primary); }
+  h1 { font-size: clamp(2.1rem, 5vw, 3.4rem); line-height: 1.12; letter-spacing: -0.02em; max-width: 46rem; }
+  h1 .hl { color: var(--primary); }
+  .sub { margin-top: 1.4rem; font-size: 1.15rem; color: var(--muted); max-width: 38rem; }
+  .cta-row { margin-top: 2.25rem; display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; }
+  .resume-link { font-size: .9rem; font-weight: 600; color: var(--muted); }
+  .resume-link:hover { color: var(--text); }
+  .stats { margin-top: 3.5rem; display: flex; flex-wrap: wrap; gap: 2.5rem; padding-top: 2rem;
+    border-top: 1px solid var(--border); }
+  .stat .num { font-size: 1.6rem; font-weight: 700; color: var(--text); }
+  .stat .lbl { font-size: .85rem; color: var(--muted); }
+
+  /* ---------- Projects ---------- */
+  .projects { padding: 4.5rem 0; background: color-mix(in srgb, var(--surface) 55%, var(--bg)); border-top: 1px solid var(--border); }
+  .section-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 2.25rem; flex-wrap: wrap; }
+  h2 { font-size: 1.75rem; letter-spacing: -0.01em; }
+  .all-link { font-size: .9rem; font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+  .card {
+    display: flex; flex-direction: column; gap: .9rem;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 1rem;
+    padding: 1.5rem; color: var(--text);
+    transition: border-color .15s, transform .15s;
+  }
+  .card:hover { border-color: var(--primary); transform: translateY(-3px); }
+  .card-meta { display: flex; align-items: center; gap: .75rem; font-size: .75rem; color: var(--faint); }
+  .chip {
+    border-radius: 999px; padding: .2rem .7rem; font-weight: 600; font-size: .72rem;
+  }
+  .chip-active { color: var(--primary); background: color-mix(in srgb, var(--primary) 12%, transparent); }
+  .chip-building { color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); }
+  .chip-concept { color: var(--muted); background: color-mix(in srgb, var(--muted) 12%, transparent); }
+  .card h3 { font-size: 1.1rem; }
+  .card p { font-size: .9rem; color: var(--muted); flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .tag { font-size: .72rem; padding: .15rem .55rem; border-radius: .35rem;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--muted); }
+  .card-link { font-size: .85rem; font-weight: 600; color: var(--primary); }
+
+  /* ---------- CTA band ---------- */
+  .cta-band { padding: 5rem 0; border-top: 1px solid var(--border); text-align: center; }
+  .cta-band h2 { font-size: clamp(1.5rem, 3.5vw, 2.1rem); max-width: 34rem; margin: 0 auto; }
+  .cta-band p { margin: 1rem auto 0; max-width: 32rem; color: var(--muted); }
+  .cta-band .cta-row { justify-content: center; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 2.5rem 0; }
+  .foot { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .foot .copy { font-size: .8rem; color: var(--faint); }
+  .foot-links { display: flex; gap: 1.5rem; }
+  .foot-links a { color: var(--muted); font-size: .85rem; }
+  .foot-links a:hover { color: var(--text); }
+
+  /* ---------- Palette reference ---------- */
+  .pal-ref { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 0; }
+  .pal-ref h2 { margin-bottom: .25rem; }
+  .pal-ref .tagline { color: var(--muted); margin-bottom: 1.75rem; }
+  .swatches { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; }
+  .swatch { width: 8.5rem; border: 1px solid var(--border); border-radius: .6rem; overflow: hidden; }
+  .swatch .color { height: 3.2rem; }
+  .swatch .info { padding: .5rem .65rem; font-size: .7rem; background: var(--surface-2); }
+  .swatch .info b { display: block; font-size: .75rem; color: var(--text); }
+  table { border-collapse: collapse; width: 100%; max-width: 44rem; font-size: .85rem; }
+  th, td { text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--border); }
+  th { color: var(--faint); font-weight: 600; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; }
+  td { color: var(--muted); }
+  td:first-child { color: var(--text); }
+  .pass { color: var(--primary); font-weight: 700; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+      display: none; position: absolute; top: 4rem; left: 0; right: 0;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--bg); border-bottom: 1px solid var(--border); padding: .5rem 1.25rem 1.25rem;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: .85rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); }
+    .nav-links .btn { margin-top: 1rem; padding: .85rem 1.25rem; }
+    .grid { grid-template-columns: 1fr; }
+    .hero { padding: 3.5rem 0 3rem; }
+    .stats { gap: 1.5rem; }
+    .cta-row .btn { flex: 1 1 100%; padding: .85rem 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="brand"><span class="brand-mark">V</span> Vessel</a>
+    <button class="menu-toggle" aria-expanded="false" aria-label="Open menu" onclick="
+      const m = document.querySelector('.nav-links');
+      m.classList.toggle('open');
+      this.setAttribute('aria-expanded', m.classList.contains('open'));
+    ">&#9776;</button>
+    <nav class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#">About</a>
+      <a href="#">GitHub</a>
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <span class="badge"><span class="dot"></span> Available for DevOps roles</span>
+    <h1>I keep production running.<br><span class="hl">12 years of enterprise IT</span>, now building modern DevOps pipelines.</h1>
+    <p class="sub">
+      I&rsquo;ve managed the servers, networks, and disaster recovery for 60+ businesses &mdash;
+      the 3&nbsp;AM pages included. Today I apply that operational discipline to Docker,
+      Terraform, CI/CD, and AWS.
+    </p>
+    <div class="cta-row">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="#projects" class="btn btn-secondary">View projects &rarr;</a>
+      <a href="#" class="resume-link">Download r&eacute;sum&eacute; (PDF)</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">12+</div><div class="lbl">years in enterprise IT</div></div>
+      <div class="stat"><div class="num">60+</div><div class="lbl">client environments managed</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lbl">on-call &amp; disaster recovery veteran</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-head">
+      <h2>Featured work</h2>
+      <a href="#" class="all-link">All projects &rarr;</a>
+    </div>
+    <div class="grid">
+      <a href="#" class="card">
+        <div class="card-meta"><span>2024</span><span class="chip chip-active">Active</span></div>
+        <h3>F1 Pit Window Predictor</h3>
+        <p>Real-time data pipeline &mdash; Python, Docker, and Airflow ingest live telemetry to predict tire strategy.</p>
+        <div class="tags"><span class="tag">Python</span><span class="tag">Docker</span><span class="tag">Airflow</span><span class="tag">PostgreSQL</span></div>
+        <span class="card-link">Read case study &rarr;</span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-meta"><span>2025</span><span class="chip chip-building">Building</span></div>
+        <h3>AI Training Plan Generator</h3>
+        <p>Personalized running plans that adapt to real performance data from Strava and Apple Health.</p>
+        <div class="tags"><span class="tag">Next.js</span><span class="tag">PostgreSQL</span><span class="tag">Strava API</span></div>
+        <span class="card-link">Read case study &rarr;</span>
+      </a>
+      <a href="#" class="card">
+        <div class="card-meta"><span>Planned</span><span class="chip chip-concept">Concept</span></div>
+        <h3>Vessel Platform</h3>
+        <p>Infrastructure and identity for a multi-vertical holding company &mdash; one operational philosophy.</p>
+        <div class="tags"><span class="tag">Terraform</span><span class="tag">AWS</span><span class="tag">Branding</span></div>
+        <span class="card-link">Read case study &rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <div class="container">
+    <h2>Need someone who has actually carried the pager?</h2>
+    <p>Every pipeline I build is shaped by a decade of being the person who answered when production broke. Let&rsquo;s talk about your infrastructure.</p>
+    <div class="cta-row">
+      <a href="#" class="btn btn-primary">Start a conversation</a>
+      <a href="mailto:system@tbuckets.us" class="btn btn-secondary">system@tbuckets.us</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot">
+    <div class="copy">&copy; 2026 T.&nbsp;Buckets &middot; All systems operational.</div>
+    <div class="foot-links">
+      <a href="https://github.com/tbuckets-dev">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<section class="pal-ref">
+  <div class="container">
+    <h2>Palette reference &mdash; Control Room</h2>
+    <p class="tagline">Terminal emerald on graphite — the ops-floor aesthetic, professionalized.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="color" style="background:#0B0F0E"></div><div class="info"><b>Background</b>#0B0F0E</div></div>
+      <div class="swatch"><div class="color" style="background:#141B19"></div><div class="info"><b>Surface</b>#141B19</div></div>
+      <div class="swatch"><div class="color" style="background:#263330"></div><div class="info"><b>Border</b>#263330</div></div>
+      <div class="swatch"><div class="color" style="background:#E7ECEA"></div><div class="info"><b>Text</b>#E7ECEA</div></div>
+      <div class="swatch"><div class="color" style="background:#9BA8A3"></div><div class="info"><b>Muted text</b>#9BA8A3</div></div>
+      <div class="swatch"><div class="color" style="background:#34D399"></div><div class="info"><b>Primary</b>#34D399</div></div>
+      <div class="swatch"><div class="color" style="background:#FBBF24"></div><div class="info"><b>Accent</b>#FBBF24</div></div>
+    </div>
+    <table>
+      <thead><tr><th>Pair</th><th>Colors</th><th>Ratio</th><th>WCAG</th></tr></thead>
+      <tbody>
+        <tr><td>Body text on background</td><td class="mono">#E7ECEA / #0B0F0E</td><td>16.15:1</td><td class="pass">AAA</td></tr>
+        <tr><td>Muted text on background</td><td class="mono">#9BA8A3 / #0B0F0E</td><td>7.83:1</td><td class="pass">AAA</td></tr>
+        <tr><td>Primary (emerald) on background</td><td class="mono">#34D399 / #0B0F0E</td><td>10.03:1</td><td class="pass">AAA</td></tr>
+        <tr><td>Button label on primary button</td><td class="mono">#052E22 / #34D399</td><td>7.69:1</td><td class="pass">AAA</td></tr>
+        <tr><td>Accent (amber) on background</td><td class="mono">#FBBF24 / #0B0F0E</td><td>11.55:1</td><td class="pass">AAA</td></tr>
+        <tr><td>Muted text on card surface</td><td class="mono">#9BA8A3 / #141B19</td><td>7.10:1</td><td class="pass">AAA</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</body>
+</html>
