@@ -1,167 +1,88 @@
-'use client';
-
 import Link from "next/link";
-import { motion } from "framer-motion";
-import Typewriter from "typewriter-effect";
-import { FaGithub, FaServer, FaCode } from "react-icons/fa"; // Ensure you have these imported
+import { projects } from "./lib/projects";
+import ProjectCard from "./components/ProjectCard";
+import ContactCta from "./components/ContactCta";
+
+const stats = [
+  { value: "12+", label: "years in enterprise IT" },
+  { value: "60+", label: "client environments managed" },
+  { value: "24/7", label: "on-call & disaster recovery veteran" },
+];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gray-950 text-white selection:bg-blue-500/30">
-      
+    <main className="min-h-screen bg-bg text-fg selection:bg-primary/30">
+
       {/* HERO SECTION */}
-      <section className="relative flex min-h-[90vh] flex-col justify-center px-4 sm:px-6 lg:px-8">
-        
-        {/* Background Grid Pattern (Optional visual flair) */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-transparent"></div>
+      <section className="relative overflow-hidden px-5 py-20 sm:py-24">
 
-        <div className="relative mx-auto max-w-5xl z-10">
-          
-          {/* Animated Greeting */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block rounded-full bg-blue-900/30 px-3 py-1 text-sm font-medium text-blue-400 ring-1 ring-inset ring-blue-700/30 mb-6">
-              System Status: Online
-            </span>
-          </motion.div>
+        {/* Background grid, faded toward the bottom */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,rgb(var(--border))_1px,transparent_1px),linear-gradient(to_bottom,rgb(var(--border))_1px,transparent_1px)] bg-[size:28px_28px] opacity-40 [mask-image:radial-gradient(ellipse_80%_60%_at_50%_0%,black_30%,transparent_75%)]" />
 
-          {/* Main Headline with Typewriter */}
-          <h1 className="text-5xl font-bold tracking-tight sm:text-7xl mb-6">
-            <span className="block text-gray-400 text-3xl sm:text-4xl mb-2 font-medium">I am an</span>
-            <span className="text-blue-500">
-              <Typewriter
-                options={{
-                  strings: [
-                    'IT Professional',
-                    'DevOps Engineer.',
-                    'Infrastructure Architect.',
-                    'Reliability Expert.',
-                  ],
-                  autoStart: true,
-                  loop: true,
-                  deleteSpeed: 50,
-                  delay: 50,
-                }}
-              />
-            </span>
+        <div className="relative mx-auto max-w-6xl">
+          <span className="mb-7 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-sm font-semibold text-primary">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            Available for DevOps roles
+          </span>
+
+          <h1 className="max-w-3xl text-4xl font-bold leading-[1.12] tracking-tight text-fg sm:text-6xl">
+            I keep production running.{" "}
+            <span className="text-primary">12 years of enterprise IT</span>, now
+            building modern DevOps pipelines.
           </h1>
 
-          {/* Subtext */}
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.8 }}
-            className="mt-6 text-xl leading-8 text-gray-400 max-w-2xl"
-          >
-            Transitioning 12 years of enterprise IT experience into modern DevOps. 
-            I build the vessel that carries your code safely to production.
-          </motion.p>
+          <p className="mt-6 max-w-2xl text-lg text-muted sm:text-xl">
+            I&rsquo;ve managed the servers, networks, and disaster recovery for 60+
+            businesses &mdash; the 3&nbsp;AM pages included. Today I apply that
+            operational discipline to Docker, Terraform, CI/CD, and AWS.
+          </p>
 
-          {/* Action Buttons */}
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.8, duration: 0.5 }}
-            className="mt-10 flex items-center gap-x-6"
-          >
+          <div className="mt-9 flex flex-wrap items-center gap-4">
+            <Link
+              href="/contact"
+              className="w-full rounded-lg bg-primary-strong px-6 py-3 text-center text-sm font-semibold text-on-primary transition-colors hover:bg-primary-hover sm:w-auto"
+            >
+              Get in touch
+            </Link>
             <Link
               href="/projects"
-              className="rounded-md bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 transition-all hover:scale-105"
+              className="w-full rounded-lg border border-line px-6 py-3 text-center text-sm font-semibold text-fg transition-colors hover:border-muted sm:w-auto"
             >
-              View Deployments
+              View projects &rarr;
             </Link>
-            <Link href="/about" className="text-sm font-semibold leading-6 text-white hover:text-blue-400 transition-colors">
-              Read My Manifest <span aria-hidden="true">→</span>
-            </Link>
-          </motion.div>
+          </div>
+
+          <dl className="mt-14 flex flex-wrap gap-x-10 gap-y-6 border-t border-line pt-8">
+            {stats.map(({ value, label }) => (
+              <div key={label}>
+                <dt className="sr-only">{label}</dt>
+                <dd className="text-2xl font-bold text-fg">{value}</dd>
+                <dd className="text-sm text-muted">{label}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 
-      {/* FEATURED PROJECTS PREVIEW (Animated) */}
-      <section className="bg-gray-900 py-24 sm:py-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">Featured Protocols</h2>
-            <p className="mt-2 text-lg leading-8 text-gray-400">
-              Selected works demonstrating the bridge between infrastructure and code.
-            </p>
+      {/* FEATURED WORK */}
+      <section className="border-t border-line bg-surface/50 py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-5">
+          <div className="mb-9 flex flex-wrap items-baseline justify-between gap-4">
+            <h2 className="text-3xl font-bold tracking-tight text-fg">Featured work</h2>
+            <Link href="/projects" className="text-sm font-semibold text-primary hover:text-primary-hover">
+              All projects &rarr;
+            </Link>
           </div>
-          
-          <div className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            
-            {/* Project Card 1 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col justify-between rounded-2xl bg-gray-950 p-8 ring-1 ring-gray-800"
-            >
-              <div>
-                <div className="flex items-center gap-x-4 text-xs">
-                  <span className="text-gray-500">2024</span>
-                  <span className="relative z-10 rounded-full bg-green-500/10 px-3 py-1.5 font-medium text-green-400">Active</span>
-                </div>
-                <div className="group relative">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                    <span className="absolute inset-0" />
-                    F1 Pit Window Predictor
-                  </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-400">
-                    Real-time ingestion pipeline using Python, Docker, and Airflow to predict tire strategy.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
 
-             {/* Project Card 2 */}
-             <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col justify-between rounded-2xl bg-gray-950 p-8 ring-1 ring-gray-800"
-            >
-              <div>
-                <div className="flex items-center gap-x-4 text-xs">
-                  <span className="text-gray-500">2024</span>
-                  <span className="relative z-10 rounded-full bg-blue-500/10 px-3 py-1.5 font-medium text-blue-400">Building</span>
-                </div>
-                <div className="group relative">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                    <span className="absolute inset-0" />
-                    Vessel Portfolio
-                  </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-400">
-                    Next.js 14 App Router site with Tailwind v4 (experimental) and CI/CD integration.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Project Card 3 */}
-            <motion.div 
-              whileHover={{ y: -10 }}
-              className="flex flex-col justify-between rounded-2xl bg-gray-950 p-8 ring-1 ring-gray-800"
-            >
-              <div>
-                <div className="flex items-center gap-x-4 text-xs">
-                  <span className="text-gray-500">Planned</span>
-                  <span className="relative z-10 rounded-full bg-gray-500/10 px-3 py-1.5 font-medium text-gray-400">Concept</span>
-                </div>
-                <div className="group relative">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
-                    <span className="absolute inset-0" />
-                    Running Plan AI
-                  </h3>
-                  <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-400">
-                    Generating marathon training schedules using LLMs and strava data integration.
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {projects.map((project) => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
           </div>
         </div>
       </section>
+
+      <ContactCta />
     </main>
   );
 }

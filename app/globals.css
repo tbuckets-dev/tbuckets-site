@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+ * Palette: Control Room — terminal emerald on graphite.
+ * Values are RGB triples so Tailwind opacity modifiers (e.g. bg-primary/10) work.
+ * Swapping the brand palette = swapping this block.
+ */
+:root {
+  --bg: 11 15 14;             /* #0B0F0E page background */
+  --surface: 20 27 25;        /* #141B19 cards, panels */
+  --surface-2: 26 36 33;      /* #1A2421 nested surfaces, tags */
+  --border: 38 51 48;         /* #263330 */
+  --text: 231 236 234;        /* #E7ECEA */
+  --muted: 155 168 163;       /* #9BA8A3 secondary text (7.8:1 on bg) */
+  --faint: 126 141 135;       /* #7E8D87 small/tertiary text (5.3:1 on bg) */
+  --primary: 52 211 153;      /* #34D399 links, highlights, healthy status */
+  --primary-strong: 52 211 153; /* button backgrounds */
+  --on-primary: 5 46 34;      /* #052E22 text on primary buttons (7.7:1) */
+  --primary-hover: 110 231 183; /* #6EE7B7 */
+  --accent: 251 191 36;       /* #FBBF24 warning-level signals, sparingly */
+}

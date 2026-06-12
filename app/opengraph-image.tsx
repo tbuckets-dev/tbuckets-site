@@ -18,8 +18,8 @@ export default function OgImage() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: '80px',
-          background: '#030712', // gray-950
-          color: '#ffffff',
+          background: '#0B0F0E', // --bg graphite
+          color: '#E7ECEA', // --text
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
@@ -30,8 +30,8 @@ export default function OgImage() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              background: '#3b82f6', // blue-500
-              color: '#030712',
+              background: '#34D399', // --primary emerald
+              color: '#052E22', // --on-primary
               borderRadius: '12px',
               fontSize: '40px',
               fontWeight: 800,
@@ -54,9 +54,9 @@ export default function OgImage() {
           }}
         >
           <span>12 years of enterprise IT,</span>
-          <span style={{ color: '#3b82f6' }}>applied to modern DevOps.</span>
+          <span style={{ color: '#34D399' }}>applied to modern DevOps.</span>
         </div>
-        <div style={{ marginTop: '32px', fontSize: '28px', color: '#9ca3af' }}>
+        <div style={{ marginTop: '32px', fontSize: '28px', color: '#9BA8A3' }}>
           Infrastructure · Automation · Reliability — tbuckets.us
         </div>
       </div>

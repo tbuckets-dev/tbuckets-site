@@ -11,25 +11,23 @@ export const contentType = 'image/png';
 export default function Icon() {
   return new ImageResponse(
     (
-      // ImageResponse JSX element
       <div
         style={{
           fontSize: 24,
-          background: '#030712', // gray-950
+          background: '#0B0F0E', // --bg graphite
           width: '100%',
           height: '100%',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          color: '#3b82f6', // blue-500
-          borderRadius: '4px', // slight rounded corners
+          color: '#34D399', // --primary emerald
+          borderRadius: '4px',
           fontWeight: 800,
         }}
       >
         V
       </div>
     ),
-    // ImageResponse options
     {
       ...size,
     }
